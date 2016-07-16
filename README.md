@@ -21,5 +21,10 @@ make
 make install
 ```
 
+Next run `obdsim` to start the simulator. It will print out the port which the simulator will communicate on.
 
-Next run `obdsim` to start the simulator
+### Running the application
+
+    ./gradlew clean bootRun
+
+Then browse to `http://localhost:8080`
