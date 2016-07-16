@@ -1,5 +1,9 @@
 # OBD HUD
 
+obd-hud is an ODB II scanner and reader. Its designed to help diagnose automotive issues and can also be used to
+monitor performance metrics.
+
+This application uses [obd-java-api](https://github.com/pires/obd-java-api) and [jssc](https://github.com/scream3r/java-simple-serial-connector) to connect to an ELM 327 device.
 
 ## Testing and simulator
 
