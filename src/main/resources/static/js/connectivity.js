@@ -27,7 +27,6 @@ $( document ).ready(function() {
     $.ajax({
       method: "POST",
       url: "/connection/connect",
-      dataType: 'json',
       contentType : 'application/json',
       data: JSON.stringify({ port: selectedPort })
     })
