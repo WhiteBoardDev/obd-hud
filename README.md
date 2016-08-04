@@ -5,6 +5,18 @@ monitor performance metrics.
 
 This application uses [obd-java-api](https://github.com/pires/obd-java-api) and [jssc](https://github.com/scream3r/java-simple-serial-connector) to connect to an ELM 327 device.
 
+## Current Status
+
+There are many TODOs for this project but the basic structure is there. Currently it works with the `obdsim` and needs to be
+tested on other devices and cars.
+
+### Work needed
+
+- enforce serial command execution. We can trigger concurrent commands at this point that mess with ELM and corrupt communication
+- test with other cars
+- nail down initialization sequence. `ConnectionManager.initObd` issues some start up commands to init the connection. I need to confirm these
+ are correct using an actual car.
+
 ## Testing and simulator
 
 ### Installing simulator
