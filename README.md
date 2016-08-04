@@ -7,7 +7,7 @@ This application uses [obd-java-api](https://github.com/pires/obd-java-api) and 
 
 ## Current Status
 
-[https://github.com/WhiteBoardDev/obd-hud/blob/master/doc/screen_shot_2016_08_03.png]
+![currentStatus](https://github.com/WhiteBoardDev/obd-hud/blob/master/doc/screen_shot_2016_08_03.png)
 
 There are many TODOs for this project but the basic structure is there. Currently it works with the `obdsim` and needs to be
 tested on other devices and cars.
