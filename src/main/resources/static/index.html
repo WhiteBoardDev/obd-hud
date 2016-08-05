@@ -7,6 +7,7 @@
   <title>obd-hud</title>
   <script src="lib/jquery-3.0.0.min.js"></script>
   <link href="lib/c3.min.css" rel="stylesheet" type="text/css">
+  <link href="css/main.css" rel="stylesheet" type="text/css">
 
   <script src="lib/d3.v3.min.js" charset="utf-8"></script>
   <script src="lib/c3.min.js"></script>
@@ -49,21 +50,27 @@
     </div><!-- /.container-fluid -->
   </nav>
 
-
-
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <select id="chart1_label" class="allMetrics chart-change-selector" chartId="chart1"></select>
         <div id="chart1"></div>
       </div>
       <div class="col-md-4">
-        <select id="chart2_label" class="allMetrics chart-change-selector" chartId="chart2"></select>
         <div id="chart2"></div>
       </div>
       <div class="col-md-4">
-        <select id="chart3_label" class="allMetrics chart-change-selector" chartId="chart3"></select>
         <div id="chart3"></div>
+      </div>
+    </div>
+    <div class="row well">
+      <div class="col-md-4">
+        <select id="chart1_label" class="allMetrics chart-change-selector" chartId="chart1"></select>
+      </div>
+      <div class="col-md-4">
+        <select id="chart2_label" class="allMetrics chart-change-selector" chartId="chart2"></select>
+      </div>
+      <div class="col-md-4">
+        <select id="chart3_label" class="allMetrics chart-change-selector" chartId="chart3"></select>
       </div>
     </div>
     <div class="row">
