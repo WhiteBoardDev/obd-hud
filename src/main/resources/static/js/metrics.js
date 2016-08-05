@@ -20,10 +20,4 @@ $( document ).ready(function() {
 
   refreshLiveMetricsTable();
   window.setInterval(refreshLiveMetricsTable, 5000);
-
-
-
-
-
-
 });

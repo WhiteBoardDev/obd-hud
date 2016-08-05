@@ -11,10 +11,9 @@
   <script src="lib/d3.v3.min.js" charset="utf-8"></script>
   <script src="lib/c3.min.js"></script>
   <script src="js/connectivity.js" ></script>
+  <script src="js/chartChange.js" ></script>
   <script src="js/metrics.js" ></script>
-  <script src="js/lineCharts.js" ></script>
-
-  <script src="js/gaugeCharts.js" ></script>
+  <script src="js/charts.js" ></script>
 
   <link rel="stylesheet" href="lib/bootstrap-3.3.6-dist/css/bootstrap.min.css">
 </head>
@@ -49,18 +48,21 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
+
+
+
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <span id="chart1_label"></span>
+        <select id="chart1_label" class="allMetrics chart-change-selector" chartId="chart1"></select>
         <div id="chart1"></div>
       </div>
       <div class="col-md-4">
-        <span id="chart2_label"></span>
+        <select id="chart2_label" class="allMetrics chart-change-selector" chartId="chart2"></select>
         <div id="chart2"></div>
       </div>
       <div class="col-md-4">
-        <span id="chart3_label"></span>
+        <select id="chart3_label" class="allMetrics chart-change-selector" chartId="chart3"></select>
         <div id="chart3"></div>
       </div>
     </div>
