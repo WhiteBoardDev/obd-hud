@@ -7,7 +7,7 @@ This application uses [obd-java-api](https://github.com/pires/obd-java-api) and 
 
 ## Current Status
 
-![currentStatus](https://github.com/WhiteBoardDev/obd-hud/blob/master/doc/screen_shot_2016_08_03.png)
+![currentStatus](https://github.com/WhiteBoardDev/obd-hud/blob/master/doc/screen_shot_2016_08_04.png)
 
 There are many TODOs for this project but the basic structure is there. Currently it works with the `obdsim` and needs to be
 tested on other devices and cars.
@@ -47,3 +47,7 @@ Next run `obdsim` to start the simulator. It will print out the port which the s
     ./gradlew clean bootRun
 
 Then browse to `http://localhost:8080`
+
+### API Documentation
+
+Api docs can be found at `http://localhost:8080/swagger-ui.html`

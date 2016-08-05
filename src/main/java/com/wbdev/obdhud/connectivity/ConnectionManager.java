@@ -1,20 +1,19 @@
 package com.wbdev.obdhud.connectivity;
 
-import com.github.pires.obd.commands.ObdCommand;
-import com.github.pires.obd.commands.control.VinCommand;
 import com.github.pires.obd.commands.protocol.*;
-import com.github.pires.obd.commands.temperature.AmbientAirTemperatureCommand;
 import com.github.pires.obd.enums.ObdProtocols;
 import jssc.SerialPort;
 import jssc.SerialPortException;
 import jssc.SerialPortList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.concurrent.locks.Lock;
 import java.util.regex.Pattern;
 
 @Component
@@ -28,6 +27,9 @@ public class ConnectionManager {
     private SerialPort serialPort;
     private SocketInputStream socketInputStream;
     private SocketOutPutStream socketOutPutStream;
+
+    @Autowired
+    private Lock lock;
 
     public String[] getAvailablePorts(){
         return SerialPortList.getPortNames("/dev/", Pattern.compile("tty.*"));
@@ -46,12 +48,17 @@ public class ConnectionManager {
         initObd(socketInputStream, socketOutPutStream);
     }
 
-    private synchronized void initObd(InputStream in, OutputStream out) throws IOException, InterruptedException {
-        new ObdResetCommand().run(in, out);
-        new EchoOffCommand().run(in, out);
-        new LineFeedOffCommand().run(in, out);
-        new TimeoutCommand(255).run(in, out);
-        new SelectProtocolCommand(ObdProtocols.AUTO).run(in, out);
+    private void initObd(InputStream in, OutputStream out) throws IOException, InterruptedException {
+        lock.lock();
+        try {
+            new ObdResetCommand().run(in, out);
+            new EchoOffCommand().run(in, out);
+            new LineFeedOffCommand().run(in, out);
+            new TimeoutCommand(255).run(in, out);
+            new SelectProtocolCommand(ObdProtocols.AUTO).run(in, out);
+        } finally {
+            lock.unlock();
+        }
     }
 
     public boolean isConnected(){

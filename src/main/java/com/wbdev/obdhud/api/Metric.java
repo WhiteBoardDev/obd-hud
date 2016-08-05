@@ -2,18 +2,18 @@ package com.wbdev.obdhud.api;
 
 import com.github.pires.obd.enums.AvailableCommandNames;
 
-public class NumericMetric {
+public class Metric {
 
-    private AvailableCommandNames metricName;
+    private final AvailableCommandNames metricName;
+    private final Double value;
+    private final String unit;
+    private final String text;
 
-    private Double value;
-
-    private String unit;
-
-    public NumericMetric(AvailableCommandNames metricName, Double value, String unit){
+    public Metric(AvailableCommandNames metricName, Double value, String unit, String text){
         this.metricName = metricName;
         this.value = value;
         this.unit = unit;
+        this.text = text;
     }
 
     public AvailableCommandNames getMetricName() {
@@ -26,5 +26,9 @@ public class NumericMetric {
 
     public String getUnit() {
         return unit;
+    }
+
+    public String getText() {
+        return text;
     }
 }
