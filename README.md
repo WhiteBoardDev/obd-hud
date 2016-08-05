@@ -14,7 +14,8 @@ tested on other devices and cars.
 
 ### Work needed
 
-- enforce serial command execution. We can trigger concurrent commands at this point that mess with ELM and corrupt communication
+- [DONE] enforce serial command execution. We can trigger concurrent commands at this point that mess with ELM and corrupt communication
+- Support for failure codes and code reset
 - test with other cars
 - nail down initialization sequence. `ConnectionManager.initObd` issues some start up commands to init the connection. I need to confirm these
  are correct using an actual car.

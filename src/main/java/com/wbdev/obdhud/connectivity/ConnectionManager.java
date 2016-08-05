@@ -46,13 +46,12 @@ public class ConnectionManager {
         initObd(socketInputStream, socketOutPutStream);
     }
 
-    private void initObd(InputStream in, OutputStream out) throws IOException, InterruptedException {
-        //new ObdResetCommand().run(in, out);
+    private synchronized void initObd(InputStream in, OutputStream out) throws IOException, InterruptedException {
+        new ObdResetCommand().run(in, out);
         new EchoOffCommand().run(in, out);
         new LineFeedOffCommand().run(in, out);
         new TimeoutCommand(255).run(in, out);
         new SelectProtocolCommand(ObdProtocols.AUTO).run(in, out);
-
     }
 
     public boolean isConnected(){

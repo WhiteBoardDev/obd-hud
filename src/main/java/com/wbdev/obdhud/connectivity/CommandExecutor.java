@@ -1,6 +1,7 @@
 package com.wbdev.obdhud.connectivity;
 
 import com.github.pires.obd.commands.ObdCommand;
+import com.github.pires.obd.exceptions.NoDataException;
 import com.wbdev.obdhud.exceptionhandling.NotConnectedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,12 +18,16 @@ public class CommandExecutor {
     @Autowired
     private ConnectionManager connectionManager;
 
-    public void run(ObdCommand obdCommand) throws IOException, InterruptedException, NotConnectedException {
+    public synchronized void run(ObdCommand obdCommand) throws IOException, InterruptedException, NotConnectedException {
         if(!connectionManager.isConnected()){
             throw new NotConnectedException();
         }
         LOGGER.info("preparing to execute command" );
-        obdCommand.run(connectionManager.getSocketInputStream(), connectionManager.getSocketOutPutStream());
+        try {
+            obdCommand.run(connectionManager.getSocketInputStream(), connectionManager.getSocketOutPutStream());
+        }catch (NoDataException noDataEx) {
+            LOGGER.warn("No Data Returned from command " + obdCommand.getName());
+        }
         int dataLeft = connectionManager.getSocketInputStream().available();
         if(dataLeft > 0){
             LOGGER.warn("Data still left after command ran " + dataLeft);
