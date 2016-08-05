@@ -28,6 +28,8 @@ tested on other devices and cars.
 - nail down initialization sequence. `ConnectionManager.initObd` issues some start up commands to init the connection. I need to confirm these
  are correct using an actual car.
 
+Feel free to [Create an issue](https://github.com/WhiteBoardDev/obd-hud/issues/new) if you want a feature which isn't listed.
+
 ## Testing and simulator
 
 ### Installing simulator
